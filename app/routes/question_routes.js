@@ -10,21 +10,21 @@ router.get('/questions', async (req, res, next) => {
 })
 
 // SHOW
-// GET /examples/21
+// GET /questions/21
 router.get('/questions/:id', async (req, res, next) => {
   const { rows: questions } = await Question.findById(req.params.id).catch(next)
   res.status(200).json(questions[0])
 })
 
 // CREATE
-// POST /examples
+// POST /questions
 router.post('/questions', async (req, res, next) => {
   const { rows } = await Question.insert(req.body.question).catch(next)
   res.status(201).json(rows[0])
 })
 
 // // DESTROY
-// // DELETE /examples/21
+// // DELETE /questions/21
 router.delete('/questions/:id', async (req, res, next) => {
   await Question.delete(req.params.id).catch(next)
   res.sendStatus(204)
